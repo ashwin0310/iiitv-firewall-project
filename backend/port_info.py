@@ -1,43 +1,38 @@
 import subprocess
-import json
 
-def run_nmap_scan(targets):
-    """
-    Run Nmap scan on the given targets.
-    Scans top 1000 TCP ports and detects services.
-    """
+
+def main():
+    targets = [
+        "10.0.2.2",
+        "10.0.2.3",
+        "10.0.2.15"
+    ]
+
     command = [
         "nmap",
-        "-sV",          # Service/version detection
-        "-T4",          # Faster execution
-        "-Pn",          # Treat hosts as online (skip ping)
-        "--top-ports", "1000",
-        "-oX", "-"      # Output in XML to stdout
+        "--privileged",
+        "-sS",
+        "-sV",
+        "--version-intensity",
+        "9",
+        "-T3",
+        "-Pn",
+        "--top-ports",
+        "1000",
+        "-oX",
+        "-"
     ] + targets
 
     result = subprocess.run(
         command,
         capture_output=True,
-        text=True,
-        check=True
+        text=True
     )
 
-    return result.stdout
+    print(result.stdout, end="")
 
-
-def main():
-    # Example: replace with discovered hosts from network_info.py
-    targets = ["10.0.2.2", "10.0.2.3", "10.0.2.15"]
-
-    print("PORT & SERVICE DETECTION")
-    print("------------------------")
-    print(f"Scanning {len(targets)} hosts...")
-
-    xml_output = run_nmap_scan(targets)
-
-    # For now, just print raw XML output
-    # Later we’ll parse and format results
-    print(xml_output)
+    if result.stderr:
+        print(result.stderr, end="")
 
 
 if __name__ == "__main__":
