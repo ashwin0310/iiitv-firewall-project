@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Network Security Assessment Report - IIIT Vadodara</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            color: #1e293b;
+            background-color: #f8fafc;
+            margin: 0;
+            padding: 30px;
+        }
+        .report-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: #ffffff;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+        .header {
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 20px;
+            margin-bottom: 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+        .title-area h1 { margin: 0; font-size: 24px; color: #0f172a; }
+        .title-area p { margin: 4px 0 0 0; color: #64748b; font-size: 13px; }
+        .meta-box { text-align: right; font-size: 12px; color: #64748b; }
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        .card {
+            background: #f1f5f9;
+            padding: 16px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        .card-num { font-size: 26px; font-weight: bold; margin-top: 4px; }
+        .card-label { font-size: 11px; text-transform: uppercase; color: #64748b; letter-spacing: 0.5px; }
+        .host-section {
+            margin-bottom: 25px;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 16px;
+            background: #ffffff;
+        }
+        .host-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #f1f5f9;
+            padding-bottom: 10px;
+        }
+        .host-ip { font-size: 16px; font-weight: bold; font-family: monospace; color: #1e293b; }
+        .host-mac { font-size: 12px; color: #64748b; font-family: monospace; }
+        .host-score-badge {
+            font-size: 12px;
+            font-weight: bold;
+            background: #e2e8f0;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        .vuln-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 12px;
+            font-size: 12px;
+        }
+        .vuln-table th, .vuln-table td {
+            text-align: left;
+            padding: 10px 8px;
+            border-bottom: 1px solid #f1f5f9;
+        }
+        .vuln-table th { background: #f8fafc; color: #475569; font-weight: 600; }
+        .badge {
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 10px;
+            text-transform: uppercase;
+            color: #fff;
+            display: inline-block;
+        }
+        .badge-critical { background: #dc2626; }
+        .badge-high { background: #ea580c; }
+        .badge-medium { background: #d97706; }
+        .badge-low { background: #2563eb; }
+        .footer {
+            margin-top: 40px;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 15px;
+            font-size: 11px;
+            color: #94a3b8;
+            text-align: center;
+        }
+        @media print {
+            body { background: #ffffff; padding: 0; }
+            .report-container { box-shadow: none; padding: 10px; max-width: 100%; }
+            .no-print { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <div class="report-container">
+        <div class="no-print" style="text-align: right; margin-bottom: 15px;">
+            <button onclick="window.print()" style="padding: 8px 16px; background: #2563eb; color: #fff; border: none; border-radius: 6px; cursor: pointer; font-weight: 600;">
+                Print / Save as PDF
+            </button>
+        </div>
+
+        <div class="header">
+            <div class="title-area">
+                <h1>Network Vulnerability Assessment Report</h1>
+                <p>IIIT Vadodara • M.Tech in Cyber Security (EMCY103: Network Security and Firewall)</p>
+            </div>
+            <div class="meta-box">
+                <div><b>Date:</b> 2026-09-18 09:23:28</div>
+                <div><b>Target Subnet:</b> 192.168.2.0/24</div>
+                <div><b>Gateway:</b> 192.168.2.1</div>
+            </div>
+        </div>
+
+        <div class="summary-grid">
+            <div class="card">
+                <div class="card-label">Security Posture Score</div>
+                <div class="card-num" style="color: #10b981;">98/100</div>
+                <div style="font-size: 11px; color: #64748b; margin-top: 2px;">Grade: A (Secure)</div>
+            </div>
+            <div class="card">
+                <div class="card-label">Reachable Devices</div>
+                <div class="card-num" style="color: #0284c7;">24</div>
+                <div style="font-size: 11px; color: #64748b; margin-top: 2px;">Live Hosts Scanned</div>
+            </div>
+            <div class="card">
+                <div class="card-label">Total Vulnerabilities</div>
+                <div class="card-num" style="color: #d97706;">12</div>
+                <div style="font-size: 11px; color: #64748b; margin-top: 2px;">Policy & CVE Risks</div>
+            </div>
+            <div class="card">
+                <div class="card-label">High / Critical Risks</div>
+                <div class="card-num" style="color: #dc2626;">0</div>
+                <div style="font-size: 11px; color: #64748b; margin-top: 2px;">Action Required</div>
+            </div>
+        </div>
+
+        <h3 style="font-size: 16px; margin-bottom: 12px;">Detailed Device Findings & Remediation</h3>
+        
+        <div class="host-section">
+            <div class="host-header">
+                <div>
+                    <span class="host-ip">192.168.2.1</span>
+                    <span class="host-mac">(C8:4F:86:A9:9F:71)</span>
+                </div>
+                <div class="host-score-badge">Score: 97/100 [A (Secure)]</div>
+            </div>
+        <table class="vuln-table"><thead><tr><th>Severity</th><th>Port/Service</th><th>Vulnerability / Policy Finding</th><th>Remediation Advice</th></tr></thead><tbody>
+                <tr>
+                    <td><span class="badge badge-low">Low</span></td>
+                    <td><b>53</b> / domain</td>
+                    <td><b>DNS Service Detected</b><br><small style="color:#64748b;">Publicly accessible or misconfigured DNS servers can be leveraged in DNS amplification attacks.</small></td>
+                    <td style="color:#059669;"><b>Ensure DNS recursion is restricted to trusted internal clients only.</b></td>
+                </tr>
+                </tbody></table></div>
+        <div class="host-section">
+            <div class="host-header">
+                <div>
+                    <span class="host-ip">192.168.2.13</span>
+                    <span class="host-mac">(00:04:F2:8F:27:71)</span>
+                </div>
+                <div class="host-score-badge">Score: 100/100 [A (Secure)]</div>
+            </div>
+        <p style="color: #059669; margin-top: 8px;">✓ No high-risk exposures or policy violations detected.</p></div>
+        <div class="host-section">
+            <div class="host-header">
+                <div>
+                    <span class="host-ip">192.168.2.18</span>
+                    <span class="host-mac">(00:04:F2:DF:C9:00)</span>
+                </div>
+                <div class="host-score-badge">Score: 100/100 [A (Secure)]</div>
+            </div>
+        <p style="color: #059669; margin-top: 8px;">✓ No high-risk exposures or policy violations detected.</p></div>
+        <div class="host-section">
+            <div class="host-header">
+                <div>
+                    <span class="host-ip">192.168.2.19</span>
+                    <span class="host-mac">(00:04:F2:81:64:AC)</span>
+                </div>
+                <div class="host-score-badge">Score: 100/100 [A (Secure)]</div>
+            </div>
+        <p style="color: #059669; margin-top: 8px;">✓ No high-risk exposures or policy violations detected.</p></div>
+        <div class="host-section">
+            <div class="host-header">
+                <div>
+                    <span class="host-ip">192.168.2.169</span>
+                    <span class="host-mac">(5C:E9:1E:8D:E6:07)</span>
+                </div>
+                <div class="host-score-badge">Score: 94/100 [A (Secure)]</div>
+            </div>
+        <table class="vuln-table"><thead><tr><th>Severity</th><th>Port/Service</th><th>Vulnerability / Policy Finding</th><th>Remediation Advice</th></tr></thead><tbody>
+                <tr>
+                    <td><span class="badge badge-low">Low</span></td>
+                    <td><b>53</b> / domain</td>
+                    <td><b>DNS Service Detected</b><br><small style="color:#64748b;">Publicly accessible or misconfigured DNS servers can be leveraged in DNS amplification attacks.</small></td>
+                    <td style="color:#059669;"><b>Ensure DNS recursion is restricted to trusted internal clients only.</b></td>
+                </tr>
+                
+                <tr>
+                    <td><span class="badge badge-low">Low</span></td>
+                    <td><b>80</b> / http</td>
+                    <td><b>Unencrypted HTTP Service Exposed</b><br><small style="color:#64748b;">Web traffic is transmitted in plaintext without TLS encryption.</small></td>
+                    <td style="color:#059669;"><b>Implement TLS/SSL certificates and configure an automatic 301 redirect to HTTPS (Port 443).</b></td>
+                </tr>
+                </tbody></table></div>
+        <div class="host-section">
+            <div class="host-header">
+                <div>
+                    <span class="host-ip">192.168.2.170</span>
+                    <span class="host-mac">(4E:00:BD:DE:2C:76)</span>
+                </div>
+                <div class="host-score-badge">Score: 100/100 [A (Secure)]</div>
+            </div>
+        <p style="color: #059669; margin-top: 8px;">✓ No high-risk exposures or policy violations detected.</p></div>
+        <div class="host-section">
+            <div class="host-header">
+                <div>
+                    <span class="host-ip">192.168.2.209</span>
+                    <span class="host-mac">(FC:EC:DA:D9:DB:3D)</span>
+                </div>
+                <div class="host-score-badge">Score: 97/100 [A (Secure)]</div>
+            </div>
+        <table class="vuln-table"><thead><tr><th>Severity</th><th>Port/Service</th><th>Vulnerability / Policy Finding</th><th>Remediation Advice</th></tr></thead><tbody>
+                <tr>
+                    <td><span class="badge badge-low">Low</span></td>
+                    <td><b>80</b> / http</td>
+                    <td><b>Unencrypted HTTP Service Exposed</b><br><small style="color:#64748b;">Web traffic is transmitted in plaintext without TLS encryption.</small></td>
+                    <td style="color:#059669;"><b>Implement TLS/SSL certificates and configure an automatic 301 redirect to HTTPS (Port 443).</b></td>
+                </tr>
+                </tbody></table></div>
+        <div class="host-section">
+            <div class="host-header">
+                <div>
+                    <span class="host-ip">192.168.2.210</span>
+                    <span class="host-mac">(B4:FB:E4:7E:18:D1)</span>
+                </div>
+                <div class="host-score-badge">Score: 97/100 [A (Secure)]</div>
+            </div>
+        <table class="vuln-table"><thead><tr><th>Severity</th><th>Port/Service</th><th>Vulnerability / Policy Finding</th><th>Remediation Advice</th></tr></thead><tbody>
+                <tr>
+                    <td><span class="badge badge-low">Low</span></td>
+                    <td><b>80</b> / http</td>
+                    <td><b>Unencrypted HTTP Service Exposed</b><br><small style="color:#64748b;">Web traffic is transmitted in plaintext without TLS encryption.</small></td>
+                    <td style="color:#059669;"><b>Implement TLS/SSL certificates and configure an automatic 301 redirect to HTTPS (Port 443).</b></td>
+                </tr>
+                </tbody></table></div>
+        <div class="host-section">
+            <div class="host-header">
+                <div>
+                    <span class="host-ip">192.168.2.211</span>
+                    <span class="host-mac">(74:83:C2:CF:E1:B5)</span>
+                </div>
+                <div class="host-score-badge">Score: 97/100 [A (Secure)]</div>
+            </div>
+        <table class="vuln-table"><thead><tr><th>Severity</th><th>Port/Service</th><th>Vulnerability / Policy Finding</th><th>Remediation Advice</th></tr></thead><tbody>
+                <tr>
+                    <td><span class="badge badge-low">Low</span></td>
+                    <td><b>80</b> / http</td>
+                    <td><b>Unencrypted HTTP Service Exposed</b><br><small style="color:#64748b;">Web traffic is transmitted in plaintext without TLS encryption.</small></td>
+                    <td style="color:#059669;"><b>Implement TLS/SSL certificates and configure an automatic 301 redirect to HTTPS (Port 443).</b></td>
+                </tr>
+                </tbody></table></div>
+        <div class="host-section">
+            <div class="host-header">
+                <div>
+                    <span class="host-ip">192.168.2.212</span>
+                    <span class="host-mac">(B4:FB:E4:FF:B7:4A)</span>
+                </div>
+                <div class="host-score-badge">Score: 97/100 [A (Secure)]</div>
+            </div>
+        <table class="vuln-table"><thead><tr><th>Severity</th><th>Port/Service</th><th>Vulnerability / Policy Finding</th><th>Remediation Advice</th></tr></thead><tbody>
+                <tr>
+                    <td><span class="badge badge-low">Low</span></td>
+                    <td><b>80</b> / http</td>
+                    <td><b>Unencrypted HTTP Service Exposed</b><br><small style="color:#64748b;">Web traffic is transmitted in plaintext without TLS encryption.</small></td>
+                    <td style="color:#059669;"><b>Implement TLS/SSL certificates and configure an automatic 301 redirect to HTTPS (Port 443).</b></td>
+                </tr>
+                </tbody></table></div>
+        <div class="host-section">
+            <div class="host-header">
+                <div>
+                    <span class="host-ip">192.168.2.213</span>
+                    <span class="host-mac">(B4:FB:E4:7E:0E:14)</span>
+                </div>
+                <div class="host-score-badge">Score: 97/100 [A (Secure)]</div>
+            </div>
+        <table class="vuln-table"><thead><tr><th>Severity</th><th>Port/Service</th><th>Vulnerability / Policy Finding</th><th>Remediation Advice</th></tr></thead><tbody>
+                <tr>
+                    <td><span class="badge badge-low">Low</span></td>
+                    <td><b>80</b> / http</td>
+                    <td><b>Unencrypted HTTP Service Exposed</b><br><small style="color:#64748b;">Web traffic is transmitted in plaintext without TLS encryption.</small></td>
+                    <td style="color:#059669;"><b>Implement TLS/SSL certificates and configure an automatic 301 redirect to HTTPS (Port 443).</b></td>
+                </tr>
+                </tbody></table></div>
+        <div class="host-section">
+            <div class="host-header">
+                <div>
+                    <span class="host-ip">192.168.2.214</span>
+                    <span class="host-mac">(B4:FB:E4:7E:11:FE)</span>
+                </div>
+                <div class="host-score-badge">Score: 97/100 [A (Secure)]</div>
+            </div>
+        <table class="vuln-table"><thead><tr><th>Severity</th><th>Port/Service</th><th>Vulnerability / Policy Finding</th><th>Remediation Advice</th></tr></thead><tbody>
+                <tr>
+                    <td><span class="badge badge-low">Low</span></td>
+                    <td><b>80</b> / http</td>
+                    <td><b>Unencrypted HTTP Service Exposed</b><br><small style="color:#64748b;">Web traffic is transmitted in plaintext without TLS encryption.</small></td>
+                    <td style="color:#059669;"><b>Implement TLS/SSL certificates and configure an automatic 301 redirect to HTTPS (Port 443).</b></td>
+                </tr>
+                </tbody></table></div>
+        <div class="host-section">
+            <div class="host-header">
+                <div>
+                    <span class="host-ip">192.168.2.215</span>
+                    <span class="host-mac">(B4:FB:E4:7E:11:C6)</span>
+                </div>
+                <div class="host-score-badge">Score: 97/100 [A (Secure)]</div>
+            </div>
+        <table class="vuln-table"><thead><tr><th>Severity</th><th>Port/Service</th><th>Vulnerability / Policy Finding</th><th>Remediation Advice</th></tr></thead><tbody>
+                <tr>
+                    <td><span class="badge badge-low">Low</span></td>
+                    <td><b>80</b> / http</td>
+                    <td><b>Unencrypted HTTP Service Exposed</b><br><small style="color:#64748b;">Web traffic is transmitted in plaintext without TLS encryption.</small></td>
+                    <td style="color:#059669;"><b>Implement TLS/SSL certificates and configure an automatic 301 redirect to HTTPS (Port 443).</b></td>
+                </tr>
+                </tbody></table></div>
+        <div class="host-section">
+            <div class="host-header">
+                <div>
+                    <span class="host-ip">192.168.2.216</span>
+                    <span class="host-mac">(B4:FB:E4:7E:18:80)</span>
+                </div>
+                <div class="host-score-badge">Score: 97/100 [A (Secure)]</div>
+            </div>
+        <table class="vuln-table"><thead><tr><th>Severity</th><th>Port/Service</th><th>Vulnerability / Policy Finding</th><th>Remediation Advice</th></tr></thead><tbody>
+                <tr>
+                    <td><span class="badge badge-low">Low</span></td>
+                    <td><b>80</b> / http</td>
+                    <td><b>Unencrypted HTTP Service Exposed</b><br><small style="color:#64748b;">Web traffic is transmitted in plaintext without TLS encryption.</small></td>
+                    <td style="color:#059669;"><b>Implement TLS/SSL certificates and configure an automatic 301 redirect to HTTPS (Port 443).</b></td>
+                </tr>
+                </tbody></table></div>
+        <div class="host-section">
+            <div class="host-header">
+                <div>
+                    <span class="host-ip">192.168.2.217</span>
+                    <span class="host-mac">(B4:FB:E4:7E:18:B3)</span>
+                </div>
+                <div class="host-score-badge">Score: 97/100 [A (Secure)]</div>
+            </div>
+        <table class="vuln-table"><thead><tr><th>Severity</th><th>Port/Service</th><th>Vulnerability / Policy Finding</th><th>Remediation Advice</th></tr></thead><tbody>
+                <tr>
+                    <td><span class="badge badge-low">Low</span></td>
+                    <td><b>80</b> / http</td>
+                    <td><b>Unencrypted HTTP Service Exposed</b><br><small style="color:#64748b;">Web traffic is transmitted in plaintext without TLS encryption.</small></td>
+                    <td style="color:#059669;"><b>Implement TLS/SSL certificates and configure an automatic 301 redirect to HTTPS (Port 443).</b></td>
+                </tr>
+                </tbody></table></div>
+        <div class="host-section">
+            <div class="host-header">
+                <div>
+                    <span class="host-ip">192.168.2.220</span>
+                    <span class="host-mac">(76:4E:45:1E:D6:59)</span>
+                </div>
+                <div class="host-score-badge">Score: 100/100 [A (Secure)]</div>
+            </div>
+        <p style="color: #059669; margin-top: 8px;">✓ No high-risk exposures or policy violations detected.</p></div>
+        <div class="host-section">
+            <div class="host-header">
+                <div>
+                    <span class="host-ip">192.168.2.171</span>
+                    <span class="host-mac">(Unknown)</span>
+                </div>
+                <div class="host-score-badge">Score: 100/100 [A (Secure)]</div>
+            </div>
+        <p style="color: #059669; margin-top: 8px;">✓ No high-risk exposures or policy violations detected.</p></div>
+
+        <div class="footer">
+            Submitted by: Ashwin Behere (202606511004) & Amishi Sinvar (202606511021) • Guided By: Tejas Kalal Sir • IIIT Vadodara
+        </div>
+    </div>
+</body>
+</html>

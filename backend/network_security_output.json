@@ -1,0 +1,294 @@
+{
+  "timestamp": "2026-09-18 09:23:28",
+  "elapsed_seconds": 254.2,
+  "network_info": {
+    "hostname": "kali",
+    "interface": "eth0",
+    "ip_address": "192.168.2.171",
+    "subnet": "192.168.2.0/24",
+    "gateway": "192.168.2.1"
+  },
+  "discovered_hosts": [
+    "192.168.2.1",
+    "192.168.2.13",
+    "192.168.2.14",
+    "192.168.2.15",
+    "192.168.2.16",
+    "192.168.2.18",
+    "192.168.2.19",
+    "192.168.2.22",
+    "192.168.2.24",
+    "192.168.2.28",
+    "192.168.2.29",
+    "192.168.2.169",
+    "192.168.2.170",
+    "192.168.2.171",
+    "192.168.2.209",
+    "192.168.2.210",
+    "192.168.2.211",
+    "192.168.2.212",
+    "192.168.2.213",
+    "192.168.2.214",
+    "192.168.2.215",
+    "192.168.2.216",
+    "192.168.2.217",
+    "192.168.2.220"
+  ],
+  "assessment_results": [
+    {
+      "ip": "192.168.2.1",
+      "mac": "C8:4F:86:A9:9F:71",
+      "security_score": 97,
+      "security_grade": "A (Secure)",
+      "findings_count": 1,
+      "findings": [
+        {
+          "port": 53,
+          "service": "domain",
+          "type": "Policy/Service Exposure",
+          "severity": "Low",
+          "title": "DNS Service Detected",
+          "description": "Publicly accessible or misconfigured DNS servers can be leveraged in DNS amplification attacks.",
+          "remediation": "Ensure DNS recursion is restricted to trusted internal clients only."
+        }
+      ]
+    },
+    {
+      "ip": "192.168.2.13",
+      "mac": "00:04:F2:8F:27:71",
+      "security_score": 100,
+      "security_grade": "A (Secure)",
+      "findings_count": 0,
+      "findings": []
+    },
+    {
+      "ip": "192.168.2.18",
+      "mac": "00:04:F2:DF:C9:00",
+      "security_score": 100,
+      "security_grade": "A (Secure)",
+      "findings_count": 0,
+      "findings": []
+    },
+    {
+      "ip": "192.168.2.19",
+      "mac": "00:04:F2:81:64:AC",
+      "security_score": 100,
+      "security_grade": "A (Secure)",
+      "findings_count": 0,
+      "findings": []
+    },
+    {
+      "ip": "192.168.2.169",
+      "mac": "5C:E9:1E:8D:E6:07",
+      "security_score": 94,
+      "security_grade": "A (Secure)",
+      "findings_count": 2,
+      "findings": [
+        {
+          "port": 53,
+          "service": "domain",
+          "type": "Policy/Service Exposure",
+          "severity": "Low",
+          "title": "DNS Service Detected",
+          "description": "Publicly accessible or misconfigured DNS servers can be leveraged in DNS amplification attacks.",
+          "remediation": "Ensure DNS recursion is restricted to trusted internal clients only."
+        },
+        {
+          "port": 80,
+          "service": "http",
+          "type": "Policy/Service Exposure",
+          "severity": "Low",
+          "title": "Unencrypted HTTP Service Exposed",
+          "description": "Web traffic is transmitted in plaintext without TLS encryption.",
+          "remediation": "Implement TLS/SSL certificates and configure an automatic 301 redirect to HTTPS (Port 443)."
+        }
+      ]
+    },
+    {
+      "ip": "192.168.2.170",
+      "mac": "4E:00:BD:DE:2C:76",
+      "security_score": 100,
+      "security_grade": "A (Secure)",
+      "findings_count": 0,
+      "findings": []
+    },
+    {
+      "ip": "192.168.2.209",
+      "mac": "FC:EC:DA:D9:DB:3D",
+      "security_score": 97,
+      "security_grade": "A (Secure)",
+      "findings_count": 1,
+      "findings": [
+        {
+          "port": 80,
+          "service": "http",
+          "type": "Policy/Service Exposure",
+          "severity": "Low",
+          "title": "Unencrypted HTTP Service Exposed",
+          "description": "Web traffic is transmitted in plaintext without TLS encryption.",
+          "remediation": "Implement TLS/SSL certificates and configure an automatic 301 redirect to HTTPS (Port 443)."
+        }
+      ]
+    },
+    {
+      "ip": "192.168.2.210",
+      "mac": "B4:FB:E4:7E:18:D1",
+      "security_score": 97,
+      "security_grade": "A (Secure)",
+      "findings_count": 1,
+      "findings": [
+        {
+          "port": 80,
+          "service": "http",
+          "type": "Policy/Service Exposure",
+          "severity": "Low",
+          "title": "Unencrypted HTTP Service Exposed",
+          "description": "Web traffic is transmitted in plaintext without TLS encryption.",
+          "remediation": "Implement TLS/SSL certificates and configure an automatic 301 redirect to HTTPS (Port 443)."
+        }
+      ]
+    },
+    {
+      "ip": "192.168.2.211",
+      "mac": "74:83:C2:CF:E1:B5",
+      "security_score": 97,
+      "security_grade": "A (Secure)",
+      "findings_count": 1,
+      "findings": [
+        {
+          "port": 80,
+          "service": "http",
+          "type": "Policy/Service Exposure",
+          "severity": "Low",
+          "title": "Unencrypted HTTP Service Exposed",
+          "description": "Web traffic is transmitted in plaintext without TLS encryption.",
+          "remediation": "Implement TLS/SSL certificates and configure an automatic 301 redirect to HTTPS (Port 443)."
+        }
+      ]
+    },
+    {
+      "ip": "192.168.2.212",
+      "mac": "B4:FB:E4:FF:B7:4A",
+      "security_score": 97,
+      "security_grade": "A (Secure)",
+      "findings_count": 1,
+      "findings": [
+        {
+          "port": 80,
+          "service": "http",
+          "type": "Policy/Service Exposure",
+          "severity": "Low",
+          "title": "Unencrypted HTTP Service Exposed",
+          "description": "Web traffic is transmitted in plaintext without TLS encryption.",
+          "remediation": "Implement TLS/SSL certificates and configure an automatic 301 redirect to HTTPS (Port 443)."
+        }
+      ]
+    },
+    {
+      "ip": "192.168.2.213",
+      "mac": "B4:FB:E4:7E:0E:14",
+      "security_score": 97,
+      "security_grade": "A (Secure)",
+      "findings_count": 1,
+      "findings": [
+        {
+          "port": 80,
+          "service": "http",
+          "type": "Policy/Service Exposure",
+          "severity": "Low",
+          "title": "Unencrypted HTTP Service Exposed",
+          "description": "Web traffic is transmitted in plaintext without TLS encryption.",
+          "remediation": "Implement TLS/SSL certificates and configure an automatic 301 redirect to HTTPS (Port 443)."
+        }
+      ]
+    },
+    {
+      "ip": "192.168.2.214",
+      "mac": "B4:FB:E4:7E:11:FE",
+      "security_score": 97,
+      "security_grade": "A (Secure)",
+      "findings_count": 1,
+      "findings": [
+        {
+          "port": 80,
+          "service": "http",
+          "type": "Policy/Service Exposure",
+          "severity": "Low",
+          "title": "Unencrypted HTTP Service Exposed",
+          "description": "Web traffic is transmitted in plaintext without TLS encryption.",
+          "remediation": "Implement TLS/SSL certificates and configure an automatic 301 redirect to HTTPS (Port 443)."
+        }
+      ]
+    },
+    {
+      "ip": "192.168.2.215",
+      "mac": "B4:FB:E4:7E:11:C6",
+      "security_score": 97,
+      "security_grade": "A (Secure)",
+      "findings_count": 1,
+      "findings": [
+        {
+          "port": 80,
+          "service": "http",
+          "type": "Policy/Service Exposure",
+          "severity": "Low",
+          "title": "Unencrypted HTTP Service Exposed",
+          "description": "Web traffic is transmitted in plaintext without TLS encryption.",
+          "remediation": "Implement TLS/SSL certificates and configure an automatic 301 redirect to HTTPS (Port 443)."
+        }
+      ]
+    },
+    {
+      "ip": "192.168.2.216",
+      "mac": "B4:FB:E4:7E:18:80",
+      "security_score": 97,
+      "security_grade": "A (Secure)",
+      "findings_count": 1,
+      "findings": [
+        {
+          "port": 80,
+          "service": "http",
+          "type": "Policy/Service Exposure",
+          "severity": "Low",
+          "title": "Unencrypted HTTP Service Exposed",
+          "description": "Web traffic is transmitted in plaintext without TLS encryption.",
+          "remediation": "Implement TLS/SSL certificates and configure an automatic 301 redirect to HTTPS (Port 443)."
+        }
+      ]
+    },
+    {
+      "ip": "192.168.2.217",
+      "mac": "B4:FB:E4:7E:18:B3",
+      "security_score": 97,
+      "security_grade": "A (Secure)",
+      "findings_count": 1,
+      "findings": [
+        {
+          "port": 80,
+          "service": "http",
+          "type": "Policy/Service Exposure",
+          "severity": "Low",
+          "title": "Unencrypted HTTP Service Exposed",
+          "description": "Web traffic is transmitted in plaintext without TLS encryption.",
+          "remediation": "Implement TLS/SSL certificates and configure an automatic 301 redirect to HTTPS (Port 443)."
+        }
+      ]
+    },
+    {
+      "ip": "192.168.2.220",
+      "mac": "76:4E:45:1E:D6:59",
+      "security_score": 100,
+      "security_grade": "A (Secure)",
+      "findings_count": 0,
+      "findings": []
+    },
+    {
+      "ip": "192.168.2.171",
+      "mac": "Unknown",
+      "security_score": 100,
+      "security_grade": "A (Secure)",
+      "findings_count": 0,
+      "findings": []
+    }
+  ]
+}
