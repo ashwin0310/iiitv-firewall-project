@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Network Vulnerability Scanner
+Comment=Network Security Assessment Tool
+Exec=/home/kali/iiitv-firewall-project/iiitv-firewall-project/backend/.venv/bin/python /home/kali/iiitv-firewall-project/iiitv-firewall-project/backend/desktop_app.py
+Path=/home/kali/iiitv-firewall-project/iiitv-firewall-project/backend
+Icon=network-workgroup
+Terminal=false
+Categories=Network;Security;

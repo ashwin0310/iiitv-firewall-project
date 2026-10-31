@@ -1,0 +1,71 @@
+{
+  "timestamp": "2026-10-25 03:43:07",
+  "elapsed_seconds": 32.54,
+  "network_info": {
+    "hostname": "kali",
+    "interface": "eth0",
+    "ip_address": "10.0.2.15",
+    "subnet": "10.0.2.0/24",
+    "gateway": "10.0.2.2"
+  },
+  "discovered_hosts": [
+    "10.0.2.2",
+    "10.0.2.3",
+    "10.0.2.15"
+  ],
+  "assessment_results": [
+    {
+      "ip": "10.0.2.2",
+      "mac": "52:54:00:12:35:00",
+      "security_score": 77,
+      "security_grade": "B (Good)",
+      "findings_count": 2,
+      "findings": [
+        {
+          "port": 135,
+          "service": "msrpc",
+          "type": "Policy/Service Exposure",
+          "severity": "Medium",
+          "title": "Microsoft RPC Endpoint Mapper Exposed",
+          "description": "MSRPC can be queried to enumerate network services, user accounts, and system interfaces.",
+          "remediation": "Block Port 135 at network perimeter firewalls and restrict access to authorized management subnets."
+        },
+        {
+          "port": 445,
+          "service": "microsoft-ds",
+          "type": "Policy/Service Exposure",
+          "severity": "High",
+          "title": "Server Message Block (SMB) Exposed",
+          "description": "SMB file sharing services are frequent targets for lateral movement and wormable exploits.",
+          "remediation": "Disable SMBv1, enforce SMB signing/encryption, and isolate Port 445 behind a firewall or VPN."
+        }
+      ]
+    },
+    {
+      "ip": "10.0.2.3",
+      "mac": "52:54:00:12:35:00",
+      "security_score": 97,
+      "security_grade": "A (Secure)",
+      "findings_count": 1,
+      "findings": [
+        {
+          "port": 53,
+          "service": "domain",
+          "type": "Policy/Service Exposure",
+          "severity": "Low",
+          "title": "DNS Service Detected",
+          "description": "Publicly accessible or misconfigured DNS servers can be leveraged in DNS amplification attacks.",
+          "remediation": "Ensure DNS recursion is restricted to trusted internal clients only."
+        }
+      ]
+    },
+    {
+      "ip": "10.0.2.15",
+      "mac": "Unknown",
+      "security_score": 100,
+      "security_grade": "A (Secure)",
+      "findings_count": 0,
+      "findings": []
+    }
+  ]
+}
